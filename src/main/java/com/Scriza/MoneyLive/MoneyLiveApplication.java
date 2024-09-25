@@ -8,6 +8,7 @@ public class MoneyLiveApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(MoneyLiveApplication.class, args);
+System.out.println("Hello From Riitk soni");
 		System.out.println("MoneyLive is Live !!!!");
 	}
 
