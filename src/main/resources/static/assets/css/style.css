@@ -137,9 +137,10 @@
   # Main
   --------------------------------------------------------------*/
   #main {
-    margin-top: 60px;
+    margin-top: 30px;
     padding: 20px 30px;
     transition: all 0.3s;
+    margin-bottom: 30px;
   }
   
   @media (max-width: 1199px) {
@@ -313,7 +314,6 @@
   
   /* Card */
   .card {
-    /* margin-bottom: 30px; */
     border: none;
     border-radius: 5px;
     box-shadow: 0px 0 30px rgba(1, 41, 112, 0.1);
@@ -527,18 +527,17 @@
 }
 .search-bar {
     /* box-shadow: 0px 20px 70px 0px rgba(86, 89, 145, 0.1); */
-    border-radius: 10px ;
-    position: relative; /* This helps position the input correctly */
-    height: 53px; /* Set the height of the search bar */
-    width: 430px; /* Set the width of the search bar */
-    opacity: 1; /* Set to 1 to ensure it's visible */
-    display: flex; /* To align input inside the bar */
-    gap: 0px; /* No gap between elements */
+    border-radius: 10px;
+    position: relative;
+    height: 41px;
+    width: 430px;
+    opacity: 1;
+    display: flex;
+    gap: 0px;
     left: 193px;
     box-shadow: 0px 20px 70px 0px #5659921A;
     background: #FFFFFF;
-
-    border: 1px solid #EDEDED
+    border: 1px solid #EDEDED;
   }
   
   .search-bar input {

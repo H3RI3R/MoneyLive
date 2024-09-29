@@ -1,363 +1,585 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dashboard</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
 
-  <title>Dashboard</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet" />
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet" />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet" />
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
+    <style>
+      .profile-card {
+        width: 288px;
+        height: 60px;
+        border-radius: 19px;
+        background: #ffffff;
+        box-shadow: 0px 20px 70px 0px #5659921a;
+        opacity: 1;
+        padding: 6px 11px;
+      }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <style>
-.profile-card {
-    width: 288px;
-    height: 60px;
-    border-radius: 19px;
+      .profile-image {
+        width: 49px;
+        height: 49px;
+        /* border-radius: 42px 0px 0px 0px; */
+        overflow: hidden;
+      }
+
+      .profile-image img {
+        width: 90%;
+        height: 90%;
+        object-fit: cover;
+      }
+
+      .profile-info {
+        height: 49px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .profile-name {
+        font-family: "Roboto", sans-serif;
+        font-size: 15px;
+        font-weight: 630;
+        line-height: 11px;
+        color: #2c3e50;
+      }
+
+      .profile-role {
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        color: #babec6;
+        margin-top: 5px;
+      }
+      .active-status-icon {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        top: 31px;
+        color: #087f00;
+        font-size: 12px;
+        /* background: white; */
+        border-radius: 50%;
+        padding: 2px 5px 14px 46px;
+        left: -2px;
+      }
+      .col-auto {
+        height: 56px;
+      }
+      /* Notification Icon Container */
+      .notification-icon {
+        width: 45px;
+        height: 45px;
+        background: #f8f8ff;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+      }
+
+      /* Notification Icon Styling */
+      .notification-icon i {
+        font-size: 15px; /* Adjust size as needed */
+        color: #2c3e50;
+      }
+      .notification-count {
+        width: 15px;
+        height: 15px;
+        background: #ee786c;
+        color: #ffffff;
+        font-family: "Roboto", sans-serif;
+        font-size: 10px;
+        font-weight: 500;
+        line-height: 16px;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 10px;
+        right: 15px;
+      }
+      /* Placeholder Styling */
+      .search-input::placeholder {
+        color: #d6caca; /* Placeholder color */
+        font-family: "Poppins", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 22.5px;
+        text-align: left;
+      }
+
+
+
+
+
+
+      /* custom card */
+      .custom-card-1 {
+    width: 174px;
+    height: 107px;
+    border-radius: 10px 0px 0px 0px;
+    border: 1px solid #F2F2F2;
     background: #FFFFFF;
-    box-shadow: 0px 20px 70px 0px #5659921A;
+    background: url(assets/img/Group\ 2450.png) no-repeat center center;
+    background-size: cover;
+    box-shadow: 0px 1px 6px 0px #0000001A;
+    margin: 0 auto;
     opacity: 1;
-    padding: 6px 11px;
+}
+.custom-card {
+    width: 174px;
+    height: 107px;
+    border-radius: 10px 0px 0px 0px;
+    border: 1px solid #F2F2F2;
+    background: #FFFFFF;
+    background: url(assets/img/Group\ 2448.png) no-repeat center center;
+    background-size: cover;
+    box-shadow: 0px 1px 6px 0px #0000001A;
+    margin: 0 auto;
+    opacity: 1;
 }
 
-.profile-image {
-    width: 49px;
-    height: 49px;
-    /* border-radius: 42px 0px 0px 0px; */
-    overflow: hidden;
-}
-
-.profile-image img {
-    width: 90%;
-    height: 90%;
-    object-fit: cover;
-}
-
-.profile-info {
-    height: 49px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.profile-name {
-    font-family: 'Roboto', sans-serif;
-    font-size: 15px;
-    font-weight: 630;
-    line-height: 11px;
-    color: #2C3E50;
-}
-
-
-.profile-role {
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    color: #BABEC6;
-    margin-top: 5px;
-}
-.active-status-icon {
-  position: absolute;
-    bottom: 0;
-    right: 0;
-    top: 31px;
-    color: #087F00;
+.total-users {
+    width: 140px;
+    /* height: 61px; */
+    font-family: 'Lato', sans-serif;
     font-size: 12px;
-    /* background: white; */
-    border-radius: 50%;
-    padding: 2px 5px 14px 46px;
-    left: -2px;
-}.col-auto{
-  height: 56px;
+    font-weight: 500;
+    line-height: 60px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #BABEC6;
 }
-/* Notification Icon Container */
-.notification-icon {
-    width: 45px;
-    height: 45px;
-    background: #F8F8FF;
-   
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
+/* New User Count Text */
+.user-count {
+    width: 38px;
+    height: 48px;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 25.2px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #0C7B8A;
+    position: absolute;
+    bottom: 5px;
+    right: 24px;
+}
+/* New Plus/Minus Percentage Text */
+
+.percentage-change {
+    width: 69px;
+    height: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16.8px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #1CD1A1;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+}
+.percentage-loss {
+    width: 69px;
+    height: 12px;
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16.8px;
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #ad2929;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
 }
 
-/* Notification Icon Styling */
-.notification-icon i {
-    font-size: 15px; /* Adjust size as needed */
-    color:   #2C3E50;
-}
-.notification-count {
-    width: 15px;
-    height: 15px;
-    background: #EE786C;
-    color: #FFFFFF;
-    font-family: 'Roboto', sans-serif;
-    font-size: 10px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: center;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Person Icon */
+.person-icon {
+    font-size: 25px;
+    color: #20A1BD;
     position: absolute;
-    top: 10px;
-    right:
-     15px;
+    bottom: 33px;
+    right: 117px;
+    opacity: 1;
 }
-/* Placeholder Styling */
-.search-input::placeholder {
-    color: #d6caca; /* Placeholder color */
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 22.5px;
-    text-align: left;
-}
-  </style>
-  <!-- =======================================================
+    </style>
+    <!-- =======================================================
   * Template Name: NiceAdmin
   * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
   * Updated: Apr 20 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ========================================aaaaaa================ -->
-</head>
-<body>
-  <!-- ======= Header ======= -->
-   <header id="header" class="header fixed-top d-flex align-items-center">
-        <div class="d-flex align-items-center justify-content-start">
-            <i class="bi bi-list toggle-sidebar-btn"></i>
-            <span class="dashboard-title" style="margin-left: 10px; font-size: 20px; font-weight: 550;">Dashboard</span>
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-start">
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+        <span
+          class="dashboard-title"
+          style="margin-left: 10px; font-size: 20px; font-weight: 550"
+          >Dashboard</span
+        >
+      </div>
+      <div class="search-bar">
+        <input type="text" placeholder="Search..." class="search-input" />
+        <i class="bi bi-search search-icon"></i>
+      </div>
+      <div class="container-fluid">
+        <div class="row justify-content-end">
+          <div class="col-auto">
+            <div class="card profile-card">
+              <div class="row no-gutters align-items-center">
+                <div class="col-auto" style="height: 56px">
+                  <div class="profile-image">
+                    <img
+                      src="assets/img/DefaultIcon.png"
+                      alt="Profile Image"
+                      class="img-fluid"
+                    />
+                    <i class="bi bi-circle-fill active-status-icon"></i>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="profile-info">
+                    <div class="profile-name">Abhishek Singh</div>
+                    <div class="profile-role">Admin</div>
+                  </div>
+                </div>
+                <div class="col-auto">
+                  <div class="notification-icon">
+                    <i class="bi bi-bell"></i>
+                    <div class="notification-count">2</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="search-bar">
-            <input type="text" placeholder="Search..." class="search-input">
-            <i class="bi bi-search search-icon"></i>
+      </div>
+    </header>
+    <!-- End Header -->
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+      <img
+        src="assets/img/CompanyLogo.svg"
+        alt="Company Logo"
+        class="sidebar-logo"
+      />
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-grid"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <!-- End Dashboard Nav -->
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-person-fill"></i>
+            <span>User Details</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-house-fill"></i>
+            <span>Lobby</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-credit-card-2-back-fill"></i>
+            <span>Payment</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-coin"></i>
+            <span>Referral & Earn</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-cash"></i>
+            <span>Commission</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-bank2"></i>
+            <span>Bank Details</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-controller"></i>
+            <span>Game Management</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-display-fill"></i>
+            <span>System Monitoring</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="ADPaymentPortal.html">
+            <i class="bi bi-box-arrow-left"></i>
+            <span>Logout</span>
+          </a>
+        </li>
+        <!-- End Profile Page Nav -->
+      </ul>
+    </aside>
+    <!-- End Sidebar-->
+
+    <main id="main" class="main">
+      <!-- Modal Structure (Placed towards the bottom of the file) -->
+      <div
+        class="modal fade"
+        id="notificationModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="notificationModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="notificationModalTitle">
+                All Notifications
+              </h5>
+              <button
+                type="button"
+                class="close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Notification items go here -->
+              <div class="notification-item">
+                <i class="bi bi-exclamation-circle text-warning"></i>
+                <div>
+                  <h4>Lorem Ipsum</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>30 min. ago</p>
+                </div>
+              </div>
+              <hr class="dropdown-divider" />
+              <div class="notification-item">
+                <i class="bi bi-x-circle text-danger"></i>
+                <div>
+                  <h4>Atque rerum nesciunt</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>1 hr. ago</p>
+                </div>
+              </div>
+              <hr class="dropdown-divider" />
+              <div class="notification-item">
+                <i class="bi bi-check-circle text-success"></i>
+                <div>
+                  <h4>Sit rerum fuga</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>2 hrs. ago</p>
+                </div>
+              </div>
+              <hr class="dropdown-divider" />
+              <div class="notification-item">
+                <i class="bi bi-info-circle text-primary"></i>
+                <div>
+                  <h4>Dicta reprehenderit</h4>
+                  <p>Quae dolorem earum veritatis oditseno</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </div>
+              <hr class="dropdown-divider" />
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+            </div>
+          </div>
         </div>
-        <div class="container-fluid">
-          <div class="row justify-content-end">
-              <div class="col-auto">
-                  <div class="card profile-card">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col-auto" style="height: 56px;">
-                              <div class="profile-image">
-                                  <img src="assets/img/DefaultIcon.png" alt="Profile Image" class="img-fluid">
-                                  <i class="bi bi-circle-fill active-status-icon"></i>
-                              </div>
-                          </div>
-                          <div class="col">
-                              <div class="profile-info">
-                                  <div class="profile-name">Abhishek Singh</div>
-                                  <div class="profile-role">Admin</div>
-                              </div>
-                          </div>
-                          <div class="col-auto">
-                            <div class="notification-icon">
-                              <i class="bi bi-bell"></i>
-                              <div class="notification-count">
-                                2
-                            </div>
-                            </div>
+      </div>
+
+      <section class="section dashboard">
+        <div class="row justify-content-center">
+            <div class="col my-1 align-items-center justify-content-center">
+                <div class="col-8 col-lg-4 col-xl-3">
+                    <div class="card custom-card">
+                        <div class="card-body ">
+                            <p class="total-users">Total User</p>
+                             <p class="user-count">₹520</p>
+                             <p class="percentage-change">+10.131%</p>
+                             <i class="bi bi-person-fill person-icon"></i>
                         </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col my-1 align-items-center justify-content-center">
+                <div class="col-8 col-lg-4 col-xl-3">
+                    <div class="card custom-card-1">
+                        <div class="card-body ">
+                            <p class="total-users">Total Profit</p>
+                            <p class="user-count">₹520</p>
+                            <p class="percentage-loss">-10.131%</p>
+                            <i class="bi bi-graph-up-arrow person-icon"></i>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col my-1 align-items-center justify-content-center">
+              <div class="col-8 col-lg-4 col-xl-3">
+                  <div class="card custom-card">
+                      <div class="card-body ">
+                          <p class="total-users">Total Recharge</p>
+                          <p class="user-count">₹520</p>
+                          <p class="percentage-change">+10.131%</p>
+                          <i class="bi bi-credit-card-2-back-fill person-icon"></i>
                       </div>
                   </div>
               </div>
           </div>
-      </div>
-
-   
-
-  </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-    <img
-    src="assets/img/CompanyLogo.svg"
-    alt="Company Logo"
-    class="sidebar-logo"
-  />
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="bi bi-grid"></i>
-          <span>Dashboard</span>
-        </a>
-      </li><!-- End Dashboard Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-person-fill"></i>
-          <span>User Details</span>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-house-fill"></i>
-          <span>Lobby</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-credit-card-2-back-fill"></i>
-        <span>Payment</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-coin"></i>
-          <span>Referral & Earn</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-cash"></i>
-          <span>Commission</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-bank2"></i>
-          <span>Bank Details</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-controller"></i>
-        <span>Game Management</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-display-fill"></i>
-          <span>System Monitoring</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="ADPaymentPortal.html">
-          <i class="bi bi-box-arrow-left"></i>
-        <span>Logout</span>
-        </a>
-      </li>
-      <!-- End Profile Page Nav -->
-    </ul>
-  </aside><!-- End Sidebar-->
-
-  <main id="main" class="main">
-    <!-- Modal Structure (Placed towards the bottom of the file) -->
-    <div class="modal fade" id="notificationModal" tabindex="-1" role="dialog" aria-labelledby="notificationModalTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="notificationModalTitle">All Notifications</h5>
-            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+          
+          <div class="col my-1 align-items-center justify-content-center">
+              <div class="col-8 col-lg-4 col-xl-3">
+                  <div class="card custom-card-1">
+                      <div class="card-body ">
+                          <p class="total-users">Total Withdrawal</p>
+                          <p class="user-count">₹520</p>
+                          <p class="percentage-change">+10.131%</p>
+                          <i class="bi bi-mailbox2-flag person-icon"></i>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="modal-body">
-            <!-- Notification items go here -->
-            <div class="notification-item">
-              <i class="bi bi-exclamation-circle text-warning"></i>
-              <div>
-                <h4>Lorem Ipsum</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>30 min. ago</p>
-              </div>
+          <div class="col my-1 align-items-center justify-content-center">
+            <div class="col-8 col-lg-4 col-xl-3">
+                <div class="card custom-card">
+                    <div class="card-body ">
+                        <p class="total-users">Total Bet</p>
+                        <p class="user-count">₹520</p>
+                        <p class="percentage-change">+10.131%</p>
+                        <i class="bi bi-coin person-icon"></i>
+                    </div>
+                </div>
             </div>
-            <hr class="dropdown-divider">
-            <div class="notification-item">
-              <i class="bi bi-x-circle text-danger"></i>
-              <div>
-                <h4>Atque rerum nesciunt</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>1 hr. ago</p>
-              </div>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="notification-item">
-              <i class="bi bi-check-circle text-success"></i>
-              <div>
-                <h4>Sit rerum fuga</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>2 hrs. ago</p>
-              </div>
-            </div>
-            <hr class="dropdown-divider">
-            <div class="notification-item">
-              <i class="bi bi-info-circle text-primary"></i>
-              <div>
-                <h4>Dicta reprehenderit</h4>
-                <p>Quae dolorem earum veritatis oditseno</p>
-                <p>4 hrs. ago</p>
-              </div>
-            </div>
-            <hr class="dropdown-divider">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
         </div>
+        
+        <div class="col my-1 align-items-center justify-content-center">
+            <div class="col-8 col-lg-4 col-xl-3">
+                <div class="card custom-card-1">
+                    <div class="card-body ">
+                        <p class="total-users">Total Win</p>
+                        <p class="user-count">₹520</p>
+                        <p class="percentage-change">+10.131%</p>
+                        <i class="bi bi-trophy-fill person-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col my-1 align-items-center justify-content-center">
+          <div class="col-8 col-lg-4 col-xl-3">
+              <div class="card custom-card">
+                  <div class="card-body ">
+                      <p class="total-users">Total Earned Bonus</p>
+                      <p class="user-count">₹520</p>
+                      <p class="percentage-change">+10.131%</p>
+                      <i class="bi bi-award-fill person-icon"></i>
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
+        </div>
+    </section>
+    </main>
+    <!-- End #main -->
 
-   
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Idcard</span></strong
+        >. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
+        Designed by <a href="https://scriza.in/">Scriza</a>
+      </div>
+    </footer>
+    <!-- End Footer -->
 
-    
+    <a
+      href="#"
+      class="back-to-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
 
-  </main><!-- End #main -->
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/chart.js/chart.umd.js"></script>
+    <script src="assets/vendor/echarts/echarts.min.js"></script>
+    <script src="assets/vendor/quill/quill.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
 
-  <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>Idcard</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://scriza.in/">Scriza</a>
-    </div>
-  </footer><!-- End Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/chart.js/chart.umd.js"></script>
-  <script src="assets/vendor/echarts/echarts.min.js"></script>
-  <script src="assets/vendor/quill/quill.js"></script>
-  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-<!--  <script src="assets/js/main.js"></script>-->
-<script src = "assets/js/index.js"></script>
-
-
-</body>
-
+    <!-- Template Main JS File -->
+    <!--  <script src="assets/js/main.js"></script>-->
+    <script src="assets/js/index.js"></script>
+  </body>
 </html>
