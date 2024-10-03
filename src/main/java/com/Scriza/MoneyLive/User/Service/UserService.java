@@ -1,5 +1,6 @@
 package com.Scriza.MoneyLive.User.Service;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -65,10 +66,15 @@ public class UserService {
         return userRepository.save(user); // Save user to the database
     }
 
-    public ResponseEntity<?> viewUserByIdentifier(String userId, String mobileNumber, String emailId,
-            String walletAddress) {
+    public ResponseEntity<?> viewUserByIdentifier(String userId, String mobileNumber, String emailId, String walletAddress) {
+        if (userId == null && mobileNumber == null && emailId == null && walletAddress == null) {
+            // If no parameters are provided, return all users
+            List<User> allUsers = userRepository.findAll(); // Assuming you have a findAll() method in UserRepository
+            return ResponseEntity.ok().body(allUsers);
+        }
+    
         Optional<User> user = Optional.empty();
-
+    
         if (userId != null) {
             user = userRepository.findByUserId(userId);
         } else if (mobileNumber != null) {
@@ -78,12 +84,13 @@ public class UserService {
         } else if (walletAddress != null) {
             user = userRepository.findByWalletAddress(walletAddress);
         }
-
+    
         if (user.isPresent()) {
             return ResponseEntity.ok().body(user.get());
         } else {
             return ResponseEntity.status(404).body(
-                    Map.of("status", "Failed", "message", "No user found with the provided identifier!"));
+                    Map.of("status", "Failed", "message", "No user found with the provided identifier!")
+            );
         }
     }
 
@@ -138,4 +145,5 @@ public class UserService {
         return ResponseEntity.ok().body(
                 Map.of("status", "success", "message", "User details have been updated successfully."));
     }
+    
 }
