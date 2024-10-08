@@ -43,7 +43,16 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.itextpdf/itextpdf -->
-
+ <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.6.0</version>
+   </dependency>
+ <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>2.6.0</version>
+   </dependency>
 		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
 		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
 		<!-- https://mvnrepository.com/artifact/com.itextpdf/itext7-core -->
@@ -83,6 +92,22 @@
 			<artifactId>itextpdf</artifactId>
 			<version>5.5.13.4</version>
 		</dependency>
+<dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-api</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+        <dependency>
+
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>0.11.5</version>
+        </dependency>
+		<dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>0.11.5</version>
+        </dependency>
 
 		<!-- iText XMLWorker Dependency for HTML Parsing -->
 		<!-- https://mvnrepository.com/artifact/com.itextpdf.tool/xmlworker -->
@@ -126,13 +151,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-security</artifactId>
-				</exclusion>
-			</exclusions>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 
