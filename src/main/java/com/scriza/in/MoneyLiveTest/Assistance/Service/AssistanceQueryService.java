@@ -53,17 +53,23 @@ public class AssistanceQueryService {
     }
     
     public ResponseEntity<ApiResponse> addMessage(String queryNo, Message message) {
-        // Remove the '#' symbol if present
-        queryNo = queryNo.replace("#", "");
+        queryNo = queryNo.replace("#", "");  // Clean the query number if needed
         
         Optional<AssistanceQuery> optionalQuery = assistanceQueryRepository.findByQueryNo(queryNo);
         if (optionalQuery.isPresent()) {
             AssistanceQuery assistanceQuery = optionalQuery.get();
+            
+            // Ensure the message object is set correctly
             message.setTimestamp(LocalDateTime.now());
             message.setAssistanceQuery(assistanceQuery);
+            
+            // Save the message
             messageRepository.save(message);
+            
+            // Add the message to the query
             assistanceQuery.getMessages().add(message);
             assistanceQueryRepository.save(assistanceQuery);
+            
             return ResponseEntity.ok(new ApiResponse("success", "Message added successfully", null));
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
@@ -99,10 +105,35 @@ public class AssistanceQueryService {
         Optional<AssistanceQuery> optionalQuery = assistanceQueryRepository.findByQueryNo(queryNo);
         if (optionalQuery.isPresent()) {
             AssistanceQuery assistanceQuery = optionalQuery.get();
-            return ResponseEntity.ok(new ApiResponse("success", "Query retrieved successfully", null)); // Only send a message
+            return ResponseEntity.ok(new ApiResponse("success", "Query retrieved successfully", assistanceQuery)); // Send AssistanceQuery as data
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body(new ApiResponse("failure", "Query not found with the provided Query No", null));
+        }
+    }
+    public ResponseEntity<ApiResponse> openQuery(String queryNo) {
+        Optional<AssistanceQuery> optionalQuery = assistanceQueryRepository.findByQueryNo(queryNo);
+
+        if (optionalQuery.isPresent()) {
+            AssistanceQuery assistanceQuery = optionalQuery.get();
+            if ("Pending".equalsIgnoreCase(assistanceQuery.getStatus())) {
+                // Update the status to "Opened"
+                assistanceQuery.setStatus("Opened");
+                assistanceQueryRepository.save(assistanceQuery); // Save the updated query
+
+                // Return success message
+                return ResponseEntity.ok(
+                    new ApiResponse("success", queryNo + " has been opened successfully")
+                );
+            } else {
+                // If status is not "Pending", return a relevant message
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ApiResponse("failure", "Query is not in 'Pending' status"));
+            }
+        } else {
+            // If query not found, return a failure message
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new ApiResponse("failure", "Query not found with the provided Query No"));
         }
     }
 }
