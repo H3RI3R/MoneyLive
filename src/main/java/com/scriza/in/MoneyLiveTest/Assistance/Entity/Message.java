@@ -18,8 +18,8 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String sender;
-    private String content;
+    private String sender;  // 'sender' instead of 'userName'
+    private String content; // 'content' instead of 'message'
     private LocalDateTime timestamp;
 
     @ManyToOne

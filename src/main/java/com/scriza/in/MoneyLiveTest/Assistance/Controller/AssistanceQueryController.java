@@ -46,4 +46,8 @@ public class AssistanceQueryController {
     public ResponseEntity<ApiResponse> getQueryByQueryNo(@PathVariable String queryNo) {
         return assistanceQueryService.getQueryByQueryNo(queryNo);
     }
+    @PutMapping("/query/open/{queryNo}")
+    public ResponseEntity<ApiResponse> openQuery(@PathVariable String queryNo) {
+        return assistanceQueryService.openQuery(queryNo);
+    }
 }

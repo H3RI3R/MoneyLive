@@ -3,31 +3,32 @@ package com.scriza.in.MoneyLiveTest.GlobalSetting.Service;
 import java.util.List;
 
 import com.scriza.in.MoneyLiveTest.Assistance.Entity.Message;
+// Import AssistanceQuery class
 
 public class ApiResponse {
     private String status;
     private String message;
-    private List<Message> messages; // This can be null if not used
+    private Object data; // Use Object for flexible data types (e.g., AssistanceQuery, Message)
 
-    // Constructor for message responses
+    // Constructor for standard message responses
     public ApiResponse(String status, String message) {
         this.status = status;
         this.message = message;
-        this.messages = null; // Initialize to null if not used
+        this.data = null; // No data for this response
     }
 
     // Constructor for message list responses
     public ApiResponse(String status, List<Message> messages) {
         this.status = status;
-        this.messages = messages; // Assign the list of messages
-        this.message = null; // Initialize to null if not used
+        this.data = messages; // Store list of messages in data
+        this.message = null; // No specific message
     }
 
-    // Constructor for both message and messages
-    public ApiResponse(String status, String message, List<Message> messages) {
+    // Constructor for assistance query responses (AssistanceQuery or other types can be stored as data)
+    public ApiResponse(String status, String message, Object data) {
         this.status = status;
         this.message = message;
-        this.messages = messages;
+        this.data = data; // Can hold any data object, including AssistanceQuery
     }
 
     // Getters and setters
@@ -47,11 +48,11 @@ public class ApiResponse {
         this.message = message;
     }
 
-    public List<Message> getMessages() {
-        return messages;
+    public Object getData() {
+        return data;
     }
 
-    public void setMessages(List<Message> messages) {
-        this.messages = messages;
+    public void setData(Object data) {
+        this.data = data;
     }
 }
