@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('userEmail').innerText = userEmail;
     document.getElementById('userEmail1').innerText = userEmail;});
 
+    document.querySelector('.toggle-sidebar-btn').addEventListener('click', function() {
+        const rowElement = document.querySelector('.row.justify-content-center');
+        
+        // Toggle the height between 100% and 125%
+        if (rowElement.style.height === '125%') {
+            rowElement.style.height = '115%';
+        } else {
+            rowElement.style.height = '125%';
+        }
+    });
+
 //---------------------------------- Table  Api -----------------------------------
 document.addEventListener('DOMContentLoaded', function() {
     const userEmail = sessionStorage.getItem('userEmail');
@@ -96,20 +107,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
    // Toggle sidebar and move the dashboard title
-   if (document.querySelector('.toggle-sidebar-btn')) {
-    document.querySelector('.toggle-sidebar-btn').addEventListener('click', function() {
-        const body = document.body;
-        body.classList.toggle('toggle-sidebar');
+   // Function to toggle sidebar width
+function toggleSidebarWidth() {
+    const sidebar = document.querySelector('.sidebar');
+    const main = document.querySelector('#main');
+    const footer = document.querySelector('#footer');
+    const logo = document.querySelector('#sidebar-logo'); 
 
-        // Adjust positions based on sidebar state
-        if (body.classList.contains('toggle-sidebar')) {
-            document.querySelector('.toggle-sidebar-btn').style.left = '10px'; 
-            document.querySelector('.dashboard-title').style.left = '60px'; 
-        } else {
-            document.querySelector('.toggle-sidebar-btn').style.left = '250px'; 
-            document.querySelector('.dashboard-title').style.left = '300px'; 
-        }
-    });
+    // Check the current width of the sidebar
+    if (sidebar.style.width === '222px' || sidebar.style.width === '') {
+        // If the sidebar is at 250px or uninitialized, set it to 74px
+        sidebar.style.width = '80px';
+        main.style.marginLeft = '100px'; // Adjust margin for main content
+        footer.style.marginLeft = '100px'; // Adjust margin for footer
+
+        // Optionally, hide span elements if required when sidebar is collapsed
+        document.querySelectorAll('.sidebar-nav .nav-link span').forEach(span => {
+            span.style.display = 'none';
+        });
+        logo.src = 'assets/img/moneyLiveIcon.png';
+        logo.classList.add('expanded');
+
+
+        // Adjust button and title positions
+        document.querySelector('.toggle-sidebar-btn').style.left = '90px'; 
+        document.querySelector('.dashboard-title').style.left = '140px'; 
+    } else {
+        // If the sidebar is at 74px, set it back to 250px
+        sidebar.style.width = '222px';
+        main.style.marginLeft = '245px'; // Reset margin for main content
+        footer.style.marginLeft = '245px'; // Reset margin for footer
+
+        // Show the span elements when the sidebar is expanded
+        document.querySelectorAll('.sidebar-nav .nav-link span').forEach(span => {
+            span.style.display = 'inline';
+        });
+        logo.src = 'assets/img/CompanyLogo.svg';
+        logo.classList.remove('expanded');
+        // Reset button and title positions
+        document.querySelector('.toggle-sidebar-btn').style.left = '232px'; 
+        document.querySelector('.dashboard-title').style.left = '300px'; 
+    }
+}
+
+// Event listener to call the toggleSidebarWidth function on button click
+if (document.querySelector('.toggle-sidebar-btn')) {
+    document.querySelector('.toggle-sidebar-btn').addEventListener('click', toggleSidebarWidth);
 }
     /**
      * Search bar toggle
