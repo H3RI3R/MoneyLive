@@ -239,6 +239,120 @@
     right: 117px;
     opacity: 1;
 }
+
+
+
+
+
+
+
+.bg-image {
+    background-image: url("assets/img/Group 2467.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    padding: 10px;
+    height: 100%;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    text-align: right;
+}
+
+        /* Center and style the profit amount and percentage */
+        .profit-amount {
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+
+    letter-spacing: 0.02em;
+    text-align: right;
+    color: #0C7B8A;
+
+
+/* Set profit amount text to black */
+        }
+
+        .profit-percentage {
+
+
+
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+
+
+    color: #1CD1A1;
+/* Positive percentage color */
+        }
+
+        /* Right-align the "Total Profit" text */
+      
+.profit-section {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    /* line-height: 60px; */
+    letter-spacing: 0.02em;
+    color: #BABEC6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Default sidebar width */
+.sidebar {
+    width: 222px;
+    transition: width 0.3s ease;
+}
+
+/* Collapsed sidebar width */
+.toggle-sidebar .sidebar {
+    width: 75px;
+}
+
+/* Hide span elements inside the sidebar when collapsed */
+.toggle-sidebar .sidebar-nav .nav-link span {
+    display: none;
+}
+
+/* Ensure icons remain visible */
+.sidebar-nav .nav-link i {
+    font-size: 1.0rem;
+    margin-right: 10px;
+}
+
+/* Transition for smooth width adjustment */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 996;
+    padding: 23px 15px 20px;
+    overflow-y: auto;
+    background-color: #20a1bd;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+
+/* Adjust content alignment when sidebar is collapsed */
+.toggle-sidebar .dashboard-title {
+    margin-left: 80px; /* Adjust according to your layout */
+}
     </style>
     <!-- =======================================================
   * Template Name: NiceAdmin
@@ -301,10 +415,11 @@
     <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
       <img
-        src="assets/img/CompanyLogo.svg"
-        alt="Company Logo"
-        class="sidebar-logo"
-      />
+      id="sidebar-logo" 
+      src="assets/img/CompanyLogo.svg"
+      alt="Company Logo"
+      class="sidebar-logo"
+  />
       <ul class="sidebar-nav" id="sidebar-nav">
         <li class="nav-item">
           <a class="nav-link" href="index.html">
@@ -363,7 +478,10 @@
             <span>System Monitoring</span>
           </a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" style="
+        position: absolute;
+        bottom: 5%;
+    ">
           <a class="nav-link collapsed" href="ADPaymentPortal.html">
             <i class="bi bi-box-arrow-left"></i>
             <span>Logout</span>
@@ -452,95 +570,69 @@
       </div>
 
       <section class="section dashboard">
-        <div class="row justify-content-center">
-            <div class="col my-1 align-items-center justify-content-center">
-                <div class="col-8 col-lg-4 col-xl-3">
-                    <div class="card custom-card">
-                        <div class="card-body ">
-                            <p class="total-users">Total User</p>
-                             <p class="user-count">₹520</p>
-                             <p class="percentage-change">+10.131%</p>
-                             <i class="bi bi-person-fill person-icon"></i>
-                        </div>
+        <div class="row justify-content-start">
+          <div class="container my-4">
+            <div class="row justify-content-center " style="height: 115%;width: 100%;">
+                <!-- Column 1 -->
+                <div class="col bg-image">
+                    <div class="profit-section">
+                        <p>Total Profit</p>
                     </div>
+                    <div class="profit-amount">₹520</div>
+                    <div class="profit-percentage">+19.23%</div>
                 </div>
-            </div>
-            
-            <div class="col my-1 align-items-center justify-content-center">
-                <div class="col-8 col-lg-4 col-xl-3">
-                    <div class="card custom-card-1">
-                        <div class="card-body ">
-                            <p class="total-users">Total Profit</p>
-                            <p class="user-count">₹520</p>
-                            <p class="percentage-loss">-10.131%</p>
-                            <i class="bi bi-graph-up-arrow person-icon"></i>
-
-                        </div>
+                
+                <!-- Column 2 -->
+                <div class="col bg-image">
+                    <div class="profit-section">
+                        <p>Total Profit</p>
                     </div>
+                    <div class="profit-amount">₹520</div>
+                    <div class="profit-percentage">+19.23%</div>
                 </div>
-            </div>
-            <div class="col my-1 align-items-center justify-content-center">
-              <div class="col-8 col-lg-4 col-xl-3">
-                  <div class="card custom-card">
-                      <div class="card-body ">
-                          <p class="total-users">Total Recharge</p>
-                          <p class="user-count">₹520</p>
-                          <p class="percentage-change">+10.131%</p>
-                          <i class="bi bi-credit-card-2-back-fill person-icon"></i>
-                      </div>
+                
+                <!-- Column 3 -->
+                <div class="col bg-image">
+                    <div class="profit-section">
+                        <p>Total Profit</p>
+                    </div>
+                    <div class="profit-amount">₹520</div>
+                    <div class="profit-percentage">+19.23%</div>
+                </div>
+                 <!-- Column 4 -->
+                 <div class="col bg-image">
+                  <div class="profit-section">
+                      <p>Total Profit</p>
                   </div>
+                  <div class="profit-amount">₹520</div>
+                  <div class="profit-percentage">+19.23%</div>
               </div>
-          </div>
-          
-          <div class="col my-1 align-items-center justify-content-center">
-              <div class="col-8 col-lg-4 col-xl-3">
-                  <div class="card custom-card-1">
-                      <div class="card-body ">
-                          <p class="total-users">Total Withdrawal</p>
-                          <p class="user-count">₹520</p>
-                          <p class="percentage-change">+10.131%</p>
-                          <i class="bi bi-mailbox2-flag person-icon"></i>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <div class="col my-1 align-items-center justify-content-center">
-            <div class="col-8 col-lg-4 col-xl-3">
-                <div class="card custom-card">
-                    <div class="card-body ">
-                        <p class="total-users">Total Bet</p>
-                        <p class="user-count">₹520</p>
-                        <p class="percentage-change">+10.131%</p>
-                        <i class="bi bi-coin person-icon"></i>
-                    </div>
+               <!-- Column 5 -->
+               <div class="col bg-image">
+                <div class="profit-section">
+                    <p>Total Profit</p>
                 </div>
+                <div class="profit-amount">₹520</div>
+                <div class="profit-percentage">+19.23%</div>
+            </div>
+             <!-- Column 6 -->
+             <div class="col bg-image">
+              <div class="profit-section">
+                  <p>Total Profit</p>
+              </div>
+              <div class="profit-amount">₹520</div>
+              <div class="profit-percentage">+19.23%</div>
+          </div>
+           <!-- Column 7 -->
+           <div class="col bg-image">
+            <div class="profit-section">
+                <p>Total Profit</p>
+            </div>
+            <div class="profit-amount">₹520</div>
+            <div class="profit-percentage">+19.23%</div>
+        </div>
             </div>
         </div>
-        
-        <div class="col my-1 align-items-center justify-content-center">
-            <div class="col-8 col-lg-4 col-xl-3">
-                <div class="card custom-card-1">
-                    <div class="card-body ">
-                        <p class="total-users">Total Win</p>
-                        <p class="user-count">₹520</p>
-                        <p class="percentage-change">+10.131%</p>
-                        <i class="bi bi-trophy-fill person-icon"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col my-1 align-items-center justify-content-center">
-          <div class="col-8 col-lg-4 col-xl-3">
-              <div class="card custom-card">
-                  <div class="card-body ">
-                      <p class="total-users">Total Earned Bonus</p>
-                      <p class="user-count">₹520</p>
-                      <p class="percentage-change">+10.131%</p>
-                      <i class="bi bi-award-fill person-icon"></i>
-                  </div>
-              </div>
-          </div>
-      </div>
         </div>
     </section>
     </main>

@@ -138,7 +138,7 @@
   --------------------------------------------------------------*/
   #main {
     margin-top: 30px;
-    padding: 20px 30px;
+    /* padding: 20px 30px; */
     transition: all 0.3s;
     margin-bottom: 30px;
   }
@@ -479,6 +479,7 @@
     /* box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1); */
     background-color: #fff;
     padding: 10px 10px 10px 307px;
+    margin-top: 16px;
     /* margin: auto; */
 }
 .navbar-open .toggle-sidebar-btn {
@@ -490,7 +491,7 @@
     cursor: pointer;
     color: #012970;
     position: absolute;
-    left: 250px;
+    left: 232px;
     transition: left 0.3s ease-in-out;
   }
 /* Sidebar opened state */
@@ -504,7 +505,7 @@
 }
 @media (max-width: 768px) {
     .header .toggle-sidebar-btn {
-        left: 250px; /* Ensure the button is at the correct position */
+        left: 232px; /* Ensure the button is at the correct position */
     }
 
     .header .dashboard-title {
@@ -513,7 +514,7 @@
 }
 @media (min-width: 769px) {
     .header .toggle-sidebar-btn {
-        left: 250px; /* Ensure the button is at the correct position */
+        left: 232px; /* Ensure the button is at the correct position */
     }
 
     .header .dashboard-title {
@@ -768,18 +769,25 @@
   /*--------------------------------------------------------------
   # Sidebar
   --------------------------------------------------------------*/
-  .sidebar-logo{
+  .sidebar-logo {
     height: 57px;
-width: 185px;
-margin-left: 10px;
-margin-bottom: 26px;
-  }
+    width: 185px;
+    margin-left: 10px;
+    margin-bottom: 27px;
+}
+.sidebar-logo.expanded {
+  height: 37px;
+  width: 42px;
+  margin-left: 10px;
+  margin-bottom: 37px;
+  margin-top: 10px;
+}
   .sidebar {
     position: fixed;
     top: 0%;
     left: 0;
     bottom: 0;
-    width: 238px;
+    width: 222px;
     z-index: 996;
     transition: all 0.3s;
     padding: 23px 15px 20px 15px;
@@ -812,7 +820,7 @@ margin-bottom: 26px;
   
     #main,
     #footer {
-      margin-left: 300px;
+      margin-left: 245px;
     }
   }
   
@@ -848,7 +856,7 @@ margin-bottom: 26px;
   
   .sidebar-nav .nav-item {
     margin-bottom: 5px;
-    margin-top: 13px;
+    margin-top: 11px;
     }
   
   .sidebar-nav .nav-heading {
@@ -863,12 +871,12 @@ margin-bottom: 26px;
   .sidebar-nav .nav-link {
     display: flex;
     align-items: center;
-    font-size: 15px;
+    font-size: 13px;
     /* font-weight: 600; */
     color: #fefeff;
     transition: 0.3;
     /* background: #f6f9ff; */
-    padding: 10px 15px;
+    padding: 5px 10px;
     border-radius: 4px;
     background-color: #5CBCD180;
     }
